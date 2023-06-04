@@ -30,9 +30,11 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.topinfo}>
-        <UserInfo userName={user.name} handleSignOut={handleSignOut} />
+        <View style={styles.info}>
+          <UserInfo userName={user.name} handleSignOut={handleSignOut} />
+        </View>
         <View style={styles.khung}>
-          <Text style={styles.text}>Acne Checker</Text>
+          <Text style={styles.textkhung}>Acne Checker</Text>
         </View>
         <View style={styles.buttonmenu}>
         <Option

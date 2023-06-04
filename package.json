@@ -14,6 +14,9 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^18.0.1",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-native-fontawesome": "^0.3.0",
     "@koale/useworker": "^4.0.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-firebase/app": "^17.5.0",
@@ -36,6 +39,7 @@
     "expo-sqlite": "~11.1.1",
     "expo-status-bar": "~1.4.4",
     "expo-web-browser": "~12.1.1",
+    "link": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-native": "^0.71.8",
@@ -51,7 +55,7 @@
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-svg": "13.4.0",
     "react-native-svg-transformer": "^1.0.0",
-    "react-native-vector-icons": "^8.1.0",
+    "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.10",
     "react-router": "^6.11.2",
     "styled-components": "^5.2.1"

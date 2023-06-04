@@ -2,21 +2,30 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#6ea9f7",
+    width: '100%',
+    height: 896,
   },
   topinfo: {
-    borderRadius: 30,
-    width: 414,
-    height: 896,
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
   },
+  info: {
+    marginTop: 150,
+    width: 375,
+    height: 100,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 10
+  },
+  
   khung: {
-    backgroundColor: "#fff",
+    borderWidth: 3,
+    borderColor: '#FFB3C6',
+    backgroundColor: '#FFFFFF',
     borderRadius: 30,
     width: 300,
     height: 100,
@@ -25,25 +34,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  text: {
+  textkhung: {
     display: "flex",
     alignItems: "flex-end",
-    color: "#6495ED",
+    color: "#6ea9f7",
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 32,
+    lineHeight: 48,
   },
   buttonmenu: {
     width: 414,
     height: 414,
     display: "flex",
     borderRadius: 30,
-    justifyContent: "center",
-    alignItems: "center",
     flexDirection: "column",
+    marginTop: 75,
   },
   option: {
     width: 414,
     height: 100,
     display: "flex",
-    alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
     padding: 10,
@@ -52,15 +62,12 @@ const styles = StyleSheet.create({
   rectangle: {
     width: 100,
     height: 100,
-    backgroundColor: "#71ddff",
+    backgroundColor: "#DBB1D3",
     padding: 30,
     fontSize: 45,
     borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
-  },
-  icon: {
-    display: "flex",
   },
 });
 

@@ -7,22 +7,22 @@ const UserInfo = ({ userName, handleSignOut }) => {
   const [showSignOutButton, setShowSignOutButton] = React.useState(false);
 
   return (
-    <View style={styles.userInfo}>
+    
+    <View style={styles.userInfo}>    
       <TouchableOpacity
       style={styles.username}
       onPress={() => setShowSignOutButton(!showSignOutButton)}
-    >
-      <Text style={styles.userName}>{userName}</Text>
-    </TouchableOpacity>
-
-          {showSignOutButton && (
+      >
+        <Text style={styles.userName}>{userName}</Text>
+      </TouchableOpacity>
+    {showSignOutButton && (
       <TouchableOpacity
-        style={styles.signOutButton}
-        onPress={handleSignOut}
+          style={styles.signOutButton}
+          onPress={handleSignOut}
       >
         <Text style={styles.signOutButtonText}>Sign Out</Text>
       </TouchableOpacity>
-    )}
+      )}
     </View>
   );
 };

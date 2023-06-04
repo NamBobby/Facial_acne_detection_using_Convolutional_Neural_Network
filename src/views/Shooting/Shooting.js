@@ -6,8 +6,9 @@ import * as ImagePicker from "expo-image-picker";
 import ShootingStyle from "./styles/ShootingStyle";
 import facescan from "../../assets/image/face-scan.png";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-import Row from "../../components/Row/Row";
+import Row from "../../components/Row/RowHome/Row";
 import UserInfo from "../../components/UserInfo/UserInfo.js";
 
 const Shooting = () => {
@@ -133,11 +134,17 @@ const Shooting = () => {
     navigation.navigate("Login");
   };
 
+  const handleHome = () => { 
+    navigation.navigate("Home", { user: route.params.user });
+  };
+
   return (
     <View style={ShootingStyle.container}>
       <View style={ShootingStyle.topinfo}>
-        <Row navigation={navigation}/>
-        <UserInfo userName={user.name} handleSignOut={handleSignOut} />
+        <View style={ShootingStyle.info}>
+          <Row handleHome={handleHome}/>
+          <UserInfo userName={user.name} handleSignOut={handleSignOut} />     
+        </View>
         <View style={ShootingStyle.mainphoto}>
           <View style={ShootingStyle.content}>
             <View style={ShootingStyle.elipse2}>
@@ -166,28 +173,31 @@ const Shooting = () => {
         </View>
       </View>
       <View style={ShootingStyle.bottominfo}>
-        {isCameraReady && (
-        <TouchableOpacity
-            onPress={toggleCameraType}
-            style={ShootingStyle.rectangleB}
-        >
-          <Text style={ShootingStyle.icon}>🔄</Text>
-        </TouchableOpacity>
-        )}
         <View style={ShootingStyle.buttonmenu}>
           <View style={ShootingStyle.upload}>
             <TouchableOpacity
               onPress={handleToggleCameraAndTakePhoto}
               style={ShootingStyle.rectangleB}
             >
-              <Text style={ShootingStyle.icon}>📸</Text>
+              <FontAwesomeIcon icon="camera" size={30} color="#5C6A7E" />
             </TouchableOpacity>
+            {isCameraReady ? (
+            <TouchableOpacity
+              onPress={toggleCameraType}
+              style={ShootingStyle.rectangleB}
+            >
+              <FontAwesomeIcon icon="camera-rotate" size={30} color="#5C6A7E" />
+            </TouchableOpacity>
+          )
+          :
+          (
             <TouchableOpacity
               onPress={handleChooseFromGallery}
               style={ShootingStyle.rectangleB}
             >
-              <Text style={ShootingStyle.icon}>🖼️</Text>
+              <FontAwesomeIcon icon="image" size={30} color="#5C6A7E" />
             </TouchableOpacity>
+          )}
           </View>
           <View style={ShootingStyle.test}>
             <TouchableOpacity

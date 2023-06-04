@@ -6,7 +6,7 @@ import { Dimensions } from 'react-native';
 import { getResults } from "../../../database.js";
 
 import UserInfo from "../../components/UserInfo/UserInfo.js";
-import Row from '../../components/Row/Row.js';
+import Row from '../../components/Row/RowHome/Row.js';
 
 import TrackingStyle from "./styles/TrackingStyle.js";
 
@@ -83,15 +83,13 @@ const Tracking = () => {
   };
 
   const chartConfigure = {
-    color: (opacity = 255) => `rgba(0, 0, 0, ${opacity})`,
     strokeWidth: 2,
     yLabel: value => `level_${value}`,
-    backgroundColor: '#e26a00',
-    backgroundGradientFrom: '#fb8c00',
-    backgroundGradientTo: '#ffa726',
+    backgroundColor: '#B7AEDF',
+    backgroundGradientFrom: '#DBB1D3',
+    backgroundGradientTo: '#DBB1D3',
     decimalPlaces: 2,
     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   };
   const graphStyle = {
     marginVertical: 10,
@@ -103,12 +101,19 @@ const Tracking = () => {
     navigation.navigate("Login");
   };
 
+  const handleHome = () => { 
+    navigation.navigate("Home", { user: route.params.user });
+  };
+
   return (
     <View style={TrackingStyle.container}>
-      <View style={TrackingStyle.topinfo}>
-        <Row navigation={navigation} />
+      <View style={TrackingStyle.info}>
+        <Row handleHome={handleHome}/>
         <UserInfo userName={user.name} handleSignOut={handleSignOut} />
-        {chartData && chartData.length > 0 ? (
+      </View>
+      <View style={TrackingStyle.topinfo}>
+        <Text style={TrackingStyle.title}>Selfie Tracker</Text>   
+        {chartData &&(
           <View style={TrackingStyle.chartContainer}>
             <LineChart
               chartConfig={chartConfigure}
@@ -143,9 +148,6 @@ const Tracking = () => {
               formatYLabel={(value) => Math.floor(value)}
             />
           </View>
-        ) : (
-          <Text>Chart data is empty</Text>
-          // Hoặc thay thế bằng một component placeholder tùy chọn
         )}
       </View>
     </View>

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import styles from "./styles/Homepage.styles.js";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 const Option = ({ onPressShooting, onPressTracking }) => {
   return (
@@ -8,14 +9,14 @@ const Option = ({ onPressShooting, onPressTracking }) => {
       <View style={styles.rectangle}>
         <TouchableOpacity onPress={onPressShooting}>
           <View style={styles.icon}>
-            <Text>🔎</Text>
+            <FontAwesomeIcon icon="magnifying-glass" size={30} color="#535773" />
           </View>
         </TouchableOpacity>
       </View>
       <View style={styles.rectangle}>
         <TouchableOpacity onPress={onPressTracking}>
           <View style={styles.icon}>
-            <Text>📈</Text>
+            <FontAwesomeIcon icon="chart-line" size={30} color="#535773" />
           </View>
         </TouchableOpacity>
       </View>

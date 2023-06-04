@@ -2,73 +2,79 @@ import { StyleSheet } from 'react-native';
 
 const LoginStyle = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 30,
+    display: "flex",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF"
   },
   topinfo: {
-    backgroundColor: '#48cff4',
-    borderRadius: 30,
     width: 375,
-    height: 441,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  row: {
-    marginTop: 40,
-    width: 375,
-    height: 55,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    gap: 44,
-  },
-  backmenu: {
-    marginLeft: 10,
-    width: 55,
-    height: 55,
-  },
-  rectangleA: {
-    width: 55,
-    height: 55,
-    backgroundColor: '#71ddff',
-    padding: 5,
-    fontSize: 42,
-    marginRight: 220,
-    borderRadius: 100,
-    cursor: 'pointer',
-    color: 'rgba(255, 255, 255, 0.4)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  icon: {
-    fontSize: 30,
+    height: 812,
+    display: "flex",
+    alignItems: "center",
+    marginTop: 100,
   },
   inputContainer: {
-    marginBottom: 20,
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    marginLeft: 20,
     width: '100%',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+  inputText: {
+    alignItems: 'flex-start'
+  },
+  text: {
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 14,
+    lineHeight: 20,
+    alignItems: 'flex-start'
+  },
+  textsignUp: {
+    color: '#8054FF',
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 14,
+    lineHeight: 20,
+    alignItems: 'flex-start'
+  },
+  textsignIn: {
+    color: '#E18FE9',
+    fontFamily: 'Montserrat-SemiBold',
+    fontSize: 14,
+    lineHeight: 20,
+    alignItems: 'flex-start'
+  },
+  texttitle: {
+    fontFamily: 'Montserrat-Regular',
+    color: '#667085',
+    fontSize: 14,
+    lineHeight: 24,
+    alignItems: 'flex-start'
   },
   input: {
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#D0D5DD',
+    backgroundColor: '#FFFFFF',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
+    width: 350
   },
-  button: {
-    backgroundColor: '#48cff4',
+  buttonUp: {
+    backgroundColor: '#8054FF',
     borderRadius: 5,
     padding: 10,
-    width: '100%',
+    width: 350,
     alignItems: 'center',
+    display: 'flex',
+    marginBottom: 10,
+  },
+  buttonIn: {
+    backgroundColor: '#E18FE9',
+    borderRadius: 5,
+    padding: 10,
+    width: 350,
+    alignItems: 'center',
+    display: 'flex',
     marginBottom: 10,
   },
   buttonText: {
@@ -78,10 +84,32 @@ const LoginStyle = StyleSheet.create({
   },
   toggleButton: {
     alignItems: 'center',
+    display: 'flex',
   },
   toggleButtonText: {
     color: '#000000',
     fontSize: 14,
+  },
+  khung: {
+    borderWidth: 3,
+    borderColor: '#6ea9f7',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 30,
+    width: 300,
+    height: 100,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 50
+  },
+  textkhung: {
+    display: "flex",
+    alignItems: "flex-end",
+    color: "#6ea9f7",
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 32,
+    lineHeight: 48,
   },
 });
 

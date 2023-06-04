@@ -65,57 +65,85 @@ const Login = () => {
   return (
     <View style={LoginStyle.container}>
       <View style={LoginStyle.topinfo}>
+        <View style={LoginStyle.khung}>
+          <Text style={LoginStyle.textkhung}>Acne Checker</Text>
+        </View>
         {showSignIn ? (
           <View style={LoginStyle.inputContainer}>
-            <Text style={LoginStyle.title}>SignIn</Text>
-            <TextInput
-              style={LoginStyle.input}
-              placeholder="Email"
-              onChangeText={(text) => setEmail(text)}
-            />
-            <TextInput
-              style={LoginStyle.input}
-              placeholder="Password"
-              secureTextEntry={true}
-              onChangeText={(text) => setPassword(text)}
-            />
-            <TouchableOpacity style={LoginStyle.button} onPress={handleSignIn}>
+            <Text style={LoginStyle.texttitle}>Please fill your detail to access your account.</Text>
+            <View style={LoginStyle.inputText}>
+              <Text style={LoginStyle.text}>Email</Text>
+              <TextInput
+                style={LoginStyle.input}
+                placeholder="Email"
+                onChangeText={(text) => setEmail(text)}
+              
+              />
+            </View>
+            <View style={LoginStyle.inputText}>
+              <Text style={LoginStyle.text}>Password</Text>
+              <TextInput
+                style={LoginStyle.input}
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+              />
+            </View>
+            <TouchableOpacity style={LoginStyle.buttonIn} onPress={handleSignIn}>
               <Text style={LoginStyle.buttonText}>Sign In</Text>
             </TouchableOpacity>
           </View>
         ) : (
           <View style={LoginStyle.inputContainer}>
-            <Text style={LoginStyle.title}>SignUp</Text>
-            <TextInput
-              style={LoginStyle.input}
-              placeholder="Name"
-              onChangeText={(text) => setName(text)}
-            />
-            <TextInput
-              style={LoginStyle.input}
-              placeholder="Email"
-              onChangeText={(text) => setEmail(text)}
-            />
-            <TextInput
-              style={LoginStyle.input}
-              placeholder="Password"
-              secureTextEntry={true}
-              onChangeText={(text) => setPassword(text)}
-            />
-            <TextInput
-              style={LoginStyle.input}
-              placeholder="PasswordConfirm"
-              secureTextEntry={true}
-              onChangeText={(text) => setConfirmPassword(text)}
-            />
-            <TouchableOpacity style={LoginStyle.button} onPress={handleSignUp}>
+            <Text style={LoginStyle.texttitle}>Please fill your detail to access your account.</Text>
+            <View style={LoginStyle.inputText}>
+              <Text style={LoginStyle.text}>Username</Text>
+              <TextInput
+                style={LoginStyle.input}
+                placeholder="Username"
+                onChangeText={(text) => setName(text)}
+              />
+            </View>
+            <View style={LoginStyle.inputText}>
+              <Text style={LoginStyle.text}>Email</Text>
+              <TextInput
+                style={LoginStyle.input}
+                placeholder="Email"
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+            <View style={LoginStyle.inputText}>
+              <Text style={LoginStyle.text}>Password</Text>
+              <TextInput
+                style={LoginStyle.input}
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+              />
+            </View>
+            <View style={LoginStyle.inputText}>
+              <Text style={LoginStyle.text}>Password Confirm</Text>
+              <TextInput
+                style={LoginStyle.input}
+                placeholder="PasswordConfirm"
+                secureTextEntry={true}
+                onChangeText={(text) => setConfirmPassword(text)}
+              />
+            </View>
+            <TouchableOpacity style={LoginStyle.buttonUp} onPress={handleSignUp}>
               <Text style={LoginStyle.buttonText}>Sign Up</Text>
             </TouchableOpacity>
           </View>
         )}
         <TouchableOpacity style={LoginStyle.toggleButton} onPress={handleToggle}>
           <Text style={LoginStyle.toggleButtonText}>
-            {showSignIn ? "Don't have an account? Sign Up" : 'Already have an account? Sign In'}
+            {showSignIn ? (
+            <Text style={LoginStyle.text}>Don't have an account? <Text style={LoginStyle.textsignIn}>Sign Up</Text></Text>
+            )
+            :
+            (
+            <Text style={LoginStyle.text}>Already have an account? <Text style={LoginStyle.textsignUp}>Sign In</Text></Text>
+            )}
           </Text>
         </TouchableOpacity>
       </View>
