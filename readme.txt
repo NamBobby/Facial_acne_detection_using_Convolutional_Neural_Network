@@ -12,7 +12,7 @@ to set up run command line:
 set up localhost:
 1. Check IP by run command line:
 >>>ipconfig
-2. Copy the IPv4 Address of Wireless LAN adapter Wi-Fi: (Ex: 192.168.100.5)
+2. Copy the IPv4 Address of Wireless LAN adapter Wi-Fi or Ethernet adapter Ethernet: (Ex: 192.168.100.5)
 Change the ip in 2 files: 
 + src/view/Shooting/Shooting.js at line 44:
 from 
