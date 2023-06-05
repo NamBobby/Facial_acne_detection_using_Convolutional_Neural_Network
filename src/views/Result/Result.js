@@ -33,13 +33,13 @@ const Result = () => {
 
   const getCircleChartPercentage = () => {
     if (result === 'level_0') {
-      return 113.96058; // Không có sự thay đổi
+      return 113.96058;
     } else if (result === 'level_1') {
-      return 75.97372; // 25% của 360 độ
+      return 75.97372; 
     } else if (result === 'level_2') {
-      return 37.98686; // 50% của 360 độ
+      return 37.98686;
     } else if (result === 'level_3') {
-      return 0; // 75% của 360 độ
+      return 0;
     } else {
       return 0;
     }
@@ -56,7 +56,7 @@ const Result = () => {
     } else if (result === 'level_3') {
       return '#FF5A63'; // Red color for level 3
     } else {
-      return '#FFFFFF'; // Default color if result is empty or unknown
+      return '#D1D1D1'; // Default color if result is empty or unknown
     }
   };
 
@@ -123,17 +123,21 @@ const Result = () => {
             <View style={ResultStyle.circleChartPercentage}>
               <Svg style={ResultStyle.circleChartBackground} viewBox="0 0 50 50">
               <Circle
-                style={ResultStyle.circleChartCircle}
+                style={{
+                  transform: [{ rotate: "-90deg" }],
+                  transformOrigin: "50% 50%",
+                  strokeLinecap: "round",
+                  fill: "transparent",
+                  strokeDasharray: 151.94744,
+                  stroke: getCircleColor(),
+                  strokeDashoffset: getCircleChartPercentage(),
+                  transitionProperty: "strokeDashoffset ease-in-out",
+                }}
                 cx={25}
                 cy={25}
                 r={24}
                 strokeWidth={2}
-                stroke={getCircleColor()} // Set the stroke color based on result level
-                fill="none"
-                strokeDasharray="151.94744" // Đặt tổng chiều dài của vòng tròn là 360 độ
-                strokeDashoffset={`${0-getCircleChartPercentage()}`} // Sử dụng giá trị tương ứng cho mỗi kết quả
               />
-
               </Svg>
               <View style={ResultStyle.contents}>
                 <Text style={ResultStyle.resultText}>{result}</Text>

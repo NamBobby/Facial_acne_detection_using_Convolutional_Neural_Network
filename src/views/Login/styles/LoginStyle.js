@@ -30,14 +30,14 @@ const LoginStyle = StyleSheet.create({
     alignItems: 'flex-start'
   },
   textsignUp: {
-    color: '#8054FF',
+    color: '#FFB3C6',
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 14,
     lineHeight: 20,
     alignItems: 'flex-start'
   },
   textsignIn: {
-    color: '#E18FE9',
+    color: '#6ea9f7',
     fontFamily: 'Montserrat-SemiBold',
     fontSize: 14,
     lineHeight: 20,
@@ -60,7 +60,7 @@ const LoginStyle = StyleSheet.create({
     width: 350
   },
   buttonUp: {
-    backgroundColor: '#8054FF',
+    backgroundColor: '#FFB3C6',
     borderRadius: 5,
     padding: 10,
     width: 350,
@@ -69,7 +69,7 @@ const LoginStyle = StyleSheet.create({
     marginBottom: 10,
   },
   buttonIn: {
-    backgroundColor: '#E18FE9',
+    backgroundColor: '#6ea9f7',
     borderRadius: 5,
     padding: 10,
     width: 350,
@@ -92,7 +92,7 @@ const LoginStyle = StyleSheet.create({
   },
   khung: {
     borderWidth: 3,
-    borderColor: '#6ea9f7',
+    borderColor: '#FFB3C6',
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     width: 300,

@@ -6,7 +6,10 @@ const ResultStyle = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFFFFF",
-    borderRadius: 30,
+    width: 375,
+    height: 812,
+    display: 'flex',
+    flexDirection: 'column'
   },
   topinfo: {
     backgroundColor: "#6ea9f7",
@@ -14,7 +17,9 @@ const ResultStyle = StyleSheet.create({
     width: '100%',
     height: 490,
     display: "flex",
+    flexDirection: 'column',
     alignItems: "center",
+    justifyContent: "center",
   },
   info: {
     marginTop: 25,
@@ -85,15 +90,15 @@ const ResultStyle = StyleSheet.create({
     width: '100%',
     height: 322,
     borderRadius: 30,
-    alignItems: 'center',
-  },
-  circleChart: {
     display: 'flex',
-    width: 250,
-    height: 250,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 10
+  },
+  circleChart: {
+    position: 'relative',
+    width: 250,
+    height: 250,
+    margin: 10
   },
   circleChartPercentage: {
     display: 'flex',
@@ -101,37 +106,37 @@ const ResultStyle = StyleSheet.create({
     justifyContent: 'center',
     width: 250,
     height: 250,
+    transform: [{ rotate: "-90deg" }]
   },
   circleChartBackground: {
     position: 'absolute',
-  },
-  circleChartCircle: {
-    position: 'absolute',
     top: 0,
     left: 0,
+    width: '100%',
+    height: '100%'
   },
   contents: {
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
     height: 200,
     borderRadius: 100,
     position: 'absolute',
-    top: '50%',
-    left: '50%',
+    top: 75,
+    left: -25,
     backgroundColor: '#FFB3C6',
-    transform: [{ translateX: -100 }, { translateY: -100 }],
+    transform: [ { rotate: "90deg" } ,{ translateX: -50 }, { translateY: -50 }],
   },
   scanningText: {
-    fontStyle: 'normal',
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     fontSize: 27,
     lineHeight: 32,
     color: '#000',
   },
   resultText: {
-    fontStyle: 'normal',
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Bold',
     fontSize: 27,
     lineHeight: 32,
     color: '#000',

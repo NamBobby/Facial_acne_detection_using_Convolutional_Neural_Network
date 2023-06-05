@@ -6,7 +6,7 @@ expo : 6.3.8
 
 delete node_module folder and yarn.lock
 to set up run command line: 
->>> npm install -g expo-cli or yarn global add expo-cli
+>>> yarn global add expo-cli ( or npm install -g expo-cli ) 
 >>> yarn install
 
 set up localhost:

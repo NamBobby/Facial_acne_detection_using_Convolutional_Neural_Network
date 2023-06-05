@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#6ea9f7",
     width: '100%',
-    height: 896,
+    height: 812,
   },
   topinfo: {
     display: "flex",

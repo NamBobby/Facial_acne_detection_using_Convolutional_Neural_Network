@@ -129,8 +129,7 @@ const ShootingStyle = StyleSheet.create({
     alignItems: "center",
   }, 
   testText: {
-    fontStyle: "normal",
-    fontWeight: "600",
+    fontFamily: 'Montserrat-Bold',
     fontSize: 17,
     lineHeight: 20,
     display: "flex",
