@@ -11,7 +11,7 @@ const LoginStyle = StyleSheet.create({
     height: 812,
     display: "flex",
     alignItems: "center",
-    marginTop: 100,
+    marginTop: 125,
   },
   inputContainer: {
     display: 'flex',
@@ -101,7 +101,7 @@ const LoginStyle = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 50
+    marginBottom: 100
   },
   textkhung: {
     display: "flex",
