@@ -43,7 +43,6 @@ const Tracking = () => {
             console.error('Dữ liệu không hợp lệ:', result);
           }
         });
-
         fillMissingLevels(chartData);
         setChartData(chartData.reverse());
         console.log('Đã getResults thành công');
@@ -60,7 +59,7 @@ const Tracking = () => {
   }, [chartData]);
 
   const fillMissingLevels = (data) => {
-    const levels = ['level_0', 'level_1', 'level_2', 'level_3'];
+    const levels = ['level_0', 'level_3'];
     const existingLevels = data.map(item => item.result);
   
     const sortedData = data.filter(item => item.date !== "").sort((a, b) => {
@@ -113,7 +112,7 @@ const Tracking = () => {
       </View>
       <View style={TrackingStyle.topinfo}>
         <Text style={TrackingStyle.title}>Acne Tracker</Text>   
-        {chartData &&(
+        {chartData && chartData.some(data => data.date !== "") ? (
           <View style={TrackingStyle.chartContainer}>
             <LineChart
               chartConfig={chartConfigure}
@@ -148,6 +147,8 @@ const Tracking = () => {
               formatYLabel={(value) => Math.floor(value)}
             />
           </View>
+        ) : (
+          <Text style={TrackingStyle.title}>Data Tracking is empty</Text>
         )}
       </View>
     </View>
