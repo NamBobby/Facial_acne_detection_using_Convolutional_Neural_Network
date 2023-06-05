@@ -112,7 +112,7 @@ const Tracking = () => {
         <UserInfo userName={user.name} handleSignOut={handleSignOut} />
       </View>
       <View style={TrackingStyle.topinfo}>
-        <Text style={TrackingStyle.title}>Selfie Tracker</Text>   
+        <Text style={TrackingStyle.title}>Acne Tracker</Text>   
         {chartData &&(
           <View style={TrackingStyle.chartContainer}>
             <LineChart

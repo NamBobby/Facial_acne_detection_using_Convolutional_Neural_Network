@@ -38,7 +38,7 @@ const Shooting = () => {
     });
 
     axios
-      .post("http://192.168.100.5:5000/process", formData)
+      .post("http://192.168.1.9:5000/process", formData)
       .then((response) => {
         let result = response.data.predicted_class;
         navigation.navigate("Result", { imageUrl: selectedFile.uri, result: result , user: route.params.user});

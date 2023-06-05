@@ -23,10 +23,10 @@ loaded_model.fc = nn.Linear(loaded_model.fc.in_features, num_classes)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Xây dựng đường dẫn tương đối đến file resnet_model.pth
-model_path = os.path.join(current_dir, 'resnet_model', 'resnet_model.pth')
+model_path = os.path.join(current_dir, 'resnet_model', 'resnet_CBAM.pth')
 
 # Sử dụng đường dẫn tương đối để tải state dictionary
-state_dict = torch.load(model_path)
+state_dict = torch.load(model_path, map_location=torch.device('cpu'))
 
 # Remove the keys corresponding to the additional layers
 state_dict = {k: v for k, v in state_dict.items() if k in loaded_model.state_dict()}
@@ -74,5 +74,5 @@ def process_endpoint():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.5', port=5000)
+    app.run(host='192.168.1.9', port=5000)
 
