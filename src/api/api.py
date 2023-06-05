@@ -74,5 +74,5 @@ def process_endpoint():
         return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.6', port=5000)
+    app.run(host='192.168.100.5', port=5000)
 
