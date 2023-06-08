@@ -4,11 +4,13 @@ nvm : 1.1.10
 node :v14.21.3
 yarn  :v1.22.19
 expo : 6.3.8
+Python: 3.10.4
+
+Delete yarn.lock file
 
 To set up run command line: 
 >>> yarn install
 >>> pip install flask flask-cors torch torchvision pillow
->>> yarn global add expo-cli ( or npm install -g expo-cli ) 
 
 set up localhost:
 1. Check IP by run command line:
@@ -26,7 +28,7 @@ app.run(host='192.168.100.6', port=5000)
 to
 app.run(host='192.168.100.5', port=5000)
 
-to run project have to open 2 terminals in 4 following steps:
+to run project on mobile device, you have to open 2 terminals in 4 following steps:
 1. First terminal run command line: 
 >>> cd src/api
 >>> python api.py
@@ -34,12 +36,12 @@ to run project have to open 2 terminals in 4 following steps:
 2. Second terminal run command line:
 >>> yarn start
 3. Download "Expo Go" Application on IOs (Appstore) or Android (Google Play)
-4. Scan the "QR code" in terminal on your phone Camera
+4. Scan the "QR code" in terminal by your phone Camera ( or the Scanner on Expo Go )
 
-if you want to compile this code on website you can follow these 2 steps:
-1. First terminal run command line: 
->>> cd src/api
->>> python api.py
+* This code/project can be run only by this way (on Mobile Device-Expo Go)
 
-2. Second terminal run command line:
->>> yarn web 
+The default account to access is:
+email: 
+>>> tiennguyen@gmail.com
+password:  
+>>> 12345
