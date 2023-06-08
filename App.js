@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome ,faArrowLeft, faCameraRotate, faCamera, faMagnifyingGlass, faImage, faFloppyDisk, faChartLine} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faArrowLeft, faCameraRotate, faCamera, faMagnifyingGlass, faImage, faFloppyDisk, faChartLine, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import Home from './src/views/Home/Home';
 import Shooting from './src/views/Shooting/Shooting';
@@ -26,7 +26,7 @@ export default function App() {
     return null; // Render a loading state or fallback component here if desired
   }
 
-  library.add(faHome ,faArrowLeft, faCameraRotate, faCamera, faMagnifyingGlass, faImage, faFloppyDisk, faChartLine);
+  library.add(faHome, faArrowLeft, faCameraRotate, faCamera, faMagnifyingGlass, faImage, faFloppyDisk, faChartLine, faEye, faEyeSlash);
 
   return (
     <NavigationContainer>

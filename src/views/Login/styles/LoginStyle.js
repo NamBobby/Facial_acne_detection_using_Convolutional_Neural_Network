@@ -21,7 +21,8 @@ const LoginStyle = StyleSheet.create({
     width: '100%',
   },
   inputText: {
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    padding: 10
   },
   text: {
     fontFamily: 'Montserrat-SemiBold',
@@ -44,20 +45,30 @@ const LoginStyle = StyleSheet.create({
     alignItems: 'flex-start'
   },
   texttitle: {
+    marginLeft: 10,
     fontFamily: 'Montserrat-Regular',
     color: '#667085',
     fontSize: 14,
     lineHeight: 24,
     alignItems: 'flex-start'
   },
+  inputkhung: {
+    width: 350,
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
   input: {
-    borderWidth: 1,
-    borderColor: '#D0D5DD',
+    borderBottomWidth: 1,
+    borderBottomColor: '#D0D5DD',
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     padding: 10,
-    marginBottom: 10,
-    width: 350
+    width: 310,
+  },
+  showPasswordButton: {
+    width: 25,
+    height: 25,
   },
   buttonUp: {
     backgroundColor: '#B7AEDF',
