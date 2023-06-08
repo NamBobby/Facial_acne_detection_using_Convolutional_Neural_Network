@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text } from "react-native";
 import styles from "./styles/Homepage.styles.js";
 import { useNavigation, useRoute } from '@react-navigation/native';
 
@@ -14,16 +14,16 @@ export default function Home() {
   console.log(user.name); // Tên người dùng
   console.log(user.email); // Email người dùng
   console.log(user.userId); // userId người dùng
-  
+
   const navigateToShooting = () => {
     navigation.navigate("Shooting", { user: route.params.user });
   };
-  
+
   const navigateToTracking = () => {
     navigation.navigate("Tracking", { user: route.params.user });
   };
 
-  const handleSignOut = () => { 
+  const handleSignOut = () => {
     navigation.navigate("Login");
   };
 
@@ -37,10 +37,10 @@ export default function Home() {
           <Text style={styles.textkhung}>Acne Checker</Text>
         </View>
         <View style={styles.buttonmenu}>
-        <Option
-          onPressShooting={navigateToShooting}
-          onPressTracking={navigateToTracking}
-        />
+          <Option
+            onPressShooting={navigateToShooting}
+            onPressTracking={navigateToTracking}
+          />
         </View>
       </View>
     </View>
