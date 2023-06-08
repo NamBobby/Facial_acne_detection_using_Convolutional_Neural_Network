@@ -19,9 +19,9 @@ set up localhost:
 Change the ip in 2 files: 
 + src/view/Shooting/Shooting.js at line 44:
 from 
-.post("http://192.168.100.6:5000/process", formData)
+>> .post("http://192.168.100.6:5000/process", formData)
 to
-.post("http://192.168.100.5:5000/process", formData)
+>> .post("http://192.168.100.5:5000/process", formData)
 + src/api/api.py at line 77:
 from
 app.run(host='192.168.100.6', port=5000)
