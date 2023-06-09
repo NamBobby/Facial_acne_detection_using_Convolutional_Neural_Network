@@ -17,12 +17,12 @@ Python: 3.10.4
 >>>ipconfig
 2. Copy the IPv4 Address of Wireless LAN adapter Wi-Fi or Ethernet adapter Ethernet: (Ex: 192.168.100.5)
 Change the ip in 2 files: 
-- src/view/Shooting/Shooting.js at line 41:
+- src/view/Shooting/Shooting.js at line 43:
  + from :
 >>> .post("http://192.168.100.6:5000/process", formData)
  + to:
 >>> .post("http://192.168.100.5:5000/process", formData)
-- src/api/api.py at line 85:
+- src/api/api.py at line 104:
 + from:
 >>> app.run(host='192.168.100.6', port=5000)
 + to:
