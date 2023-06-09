@@ -9,8 +9,8 @@ Python: 3.10.4
 * Delete yarn.lock file
 
 * To set up run command line: 
->>> yarn install
->>> pip install flask flask-cors torch torchvision pillow
+1. >>> yarn install
+2. >>> pip install flask flask-cors torch torchvision pillow
 
 * Set up localhost:
 1. Check IP by run command line:
