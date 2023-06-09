@@ -12,7 +12,7 @@ CORS(app)
 
 # Load the saved model
 num_classes = 4
-loaded_model = models.resnet18(pretrained=False)
+loaded_model = models.resnet18(weights=None)
 loaded_model.avgpool = nn.Sequential(
     nn.AdaptiveAvgPool2d(1),
     CBAM(channels=loaded_model.fc.in_features)
@@ -32,7 +32,7 @@ state_dict = torch.load(model_path, map_location=torch.device('cpu'))
 state_dict = {k: v for k, v in state_dict.items() if k in loaded_model.state_dict()}
 
 # Load the modified state dictionary into the model
-loaded_model.load_state_dict(state_dict)
+loaded_model.load_state_dict(state_dict, strict=False)
 
 # Move the model to the device
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -89,8 +89,7 @@ def process_endpoint():
             return jsonify({'error': str(e)})
     elif request.method == 'GET':
         if predicted_label is not None:
-            image_url = f"static/images/{image_filename}"
-            return render_template('result.html', predicted_class=predicted_label, image_url=image_url)
+            return render_template('result.html', predicted_class=predicted_label)
         else:
             return jsonify({'error': 'No prediction available'})
     else:
