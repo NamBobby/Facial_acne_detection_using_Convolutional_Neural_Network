@@ -24,7 +24,7 @@ const Result = () => {
     if (state) {
       const { result } = state;
       setResult(result);
-
+      console.log('Result: ', result);
       setTimeout(() => {
         setScanning(false);
       }, 2000);

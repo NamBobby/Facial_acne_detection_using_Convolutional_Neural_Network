@@ -1,10 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, render_template
 from flask_cors import CORS
 import torch
 import torch.nn as nn
 from torchvision import transforms, models
 from PIL import Image
-from train import *
 import os
 
 app = Flask(__name__)
@@ -13,10 +12,7 @@ CORS(app)
 # Load the saved model
 num_classes = 4
 loaded_model = models.resnet18(pretrained=False)
-loaded_model.avgpool = nn.Sequential(
-    nn.AdaptiveAvgPool2d(1),
-    CBAM(channels=loaded_model.fc.in_features)
-)
+loaded_model.avgpool = nn.AdaptiveAvgPool2d(1)
 loaded_model.fc = nn.Linear(loaded_model.fc.in_features, num_classes)
 
 # Xác định đường dẫn tuyệt đối của file api.py
@@ -45,34 +41,60 @@ loaded_model.eval()
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.25, 0.25, 0.25])
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-@app.route('/process', methods=['POST'])
+predicted_label = None
+
+@app.route('/process', methods=['POST', 'GET'])
 def process_endpoint():
-    if 'image' not in request.files:
-        return jsonify({'error': 'No image found'})
+    global predicted_label
+    image_filename = 'image.jpg'
 
-    # Get the image file from the POST request
-    image_file = request.files['image']
+    if request.method == 'POST':
+        if 'image' not in request.files:
+            return jsonify({'error': 'No image found'})
 
-    try:
-        # Open and preprocess the image
-        image = Image.open(image_file)
-        image = transform(image).unsqueeze(0).to(device)
+        # Get the image file from the POST request
+        image_file = request.files['image']
+        try:
+            # Open and preprocess the image
+            image = Image.open(image_file)
 
-        # Perform inference on the image
-        output = loaded_model(image)
-        _, predicted_class = torch.max(output, 1)
-        predicted_class = predicted_class.item()
-        class_names = ["level_0", "level_1", "level_2", "level_3"]
-        predicted_label = class_names[predicted_class]
+            # Check the file format and convert to RGB if necessary
+            if image.format != 'JPEG':
+                image = image.convert('RGB')
 
-        # Return the predicted class and processed image URL as JSON response
-        return jsonify({'predicted_class': predicted_label})
-    except Exception as e:
-        return jsonify({'error': str(e)})
+            # Save the image
+            image_path = f'static/images/{image_filename}'
+            image.save(image_path, format='JPEG', quality=90)
+
+            # Resize and transform the image
+            image = transform(image).unsqueeze(0).to(device)
+
+            # Perform inference on the image
+            output = loaded_model(image)
+            _, predicted_class = torch.max(output, 1)
+            predicted_class = predicted_class.item()
+            class_names = ["level_0", "level_1", "level_2", "level_3"]
+            predicted_label = class_names[predicted_class]
+
+            # Return the predicted label, image path, and base64 string as JSON
+            return jsonify({'predicted_class': predicted_label, 'image_path': image_path})
+        except Exception as e:
+            return jsonify({'error': str(e)})
+    elif request.method == 'GET':
+        if predicted_label is not None:
+            image_url = f"static/images/{image_filename}"
+            return render_template('result.html', predicted_class=predicted_label, image_url=image_url)
+        else:
+            return jsonify({'error': 'No prediction available'})
+    else:
+        return jsonify({'error': 'Method not allowed'}), 405
+    
+@app.route('/static/images/<path:filename>')
+def get_image(filename):
+    return send_from_directory(os.path.join(current_dir, 'static', 'images'), filename)
 
 if __name__ == '__main__':
     app.run(host='192.168.100.5', port=5000)
-
