@@ -5,6 +5,7 @@ import torch.nn as nn
 from torchvision import transforms, models
 from PIL import Image
 import os
+from train import *
 
 app = Flask(__name__)
 CORS(app)
@@ -12,7 +13,10 @@ CORS(app)
 # Load the saved model
 num_classes = 4
 loaded_model = models.resnet18(pretrained=False)
-loaded_model.avgpool = nn.AdaptiveAvgPool2d(1)
+loaded_model.avgpool = nn.Sequential(
+    nn.AdaptiveAvgPool2d(1),
+    CBAM(channels=loaded_model.fc.in_features)
+)
 loaded_model.fc = nn.Linear(loaded_model.fc.in_features, num_classes)
 
 # Xác định đường dẫn tuyệt đối của file api.py
