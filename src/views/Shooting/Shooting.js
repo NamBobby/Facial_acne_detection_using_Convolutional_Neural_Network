@@ -25,28 +25,31 @@ const Shooting = () => {
   let cameraRef = useRef(null);
 
   const handleStartTesting = () => {
-    if (!selectedFile) {
-      alert("Please upload an image before testing.");
+    if (!selectedFile || !selectedFile.type) {
+      alert("Please upload or capture an image before testing.");
       return;
     }
-
+  
+    const fileExtension = selectedFile.uri.split(".").pop(); // Lấy phần mở rộng của file từ uri
+  
     const formData = new FormData();
     formData.append("image", {
       uri: selectedFile.uri,
-      name: "image.jpg",
-      type: "image/jpeg",
+      name: "image." + fileExtension,
+      type: selectedFile.type,
     });
-
+  
     axios
-      .post("http://192.168.100.7:5000/process", formData)
+      .post("http://192.168.100.5:5000/process", formData)  // Replace with your Flask API host and port
       .then((response) => {
         let result = response.data.predicted_class;
+        console.log('Result: ', result);
         navigation.navigate("Result", { imageUrl: selectedFile.uri, result: result, user: route.params.user });
       })
       .catch((error) => {
         console.log(error);
       });
-  };
+  };  
 
   const handleTakePhoto = async () => {
     if (cameraRef.current) {
@@ -59,8 +62,11 @@ const Shooting = () => {
       setIsCapturing(true);
 
       try {
-        let photo = await cameraRef.current.takePictureAsync();
-        setSelectedFile(photo);
+        let photo = await cameraRef.current.takePictureAsync({ base64: true });
+        setSelectedFile({
+          uri: `data:image/jpg;base64,${photo.base64}`,  // Set the uri with the base64 image data
+          type: 'image/jpg',  // Set the image type
+        });
         setIsOpenCamera(false);
       } catch (error) {
         console.log(error);
@@ -128,13 +134,13 @@ const Shooting = () => {
         : Camera.Constants.Type.front
     );
   };
+  
 
-
-  const handleSignOut = () => {
+  const handleSignOut = () => { 
     navigation.navigate("Login");
   };
 
-  const handleHome = () => {
+  const handleHome = () => { 
     navigation.navigate("Home", { user: route.params.user });
   };
 
@@ -142,14 +148,14 @@ const Shooting = () => {
     <View style={ShootingStyle.container}>
       <View style={ShootingStyle.topinfo}>
         <View style={ShootingStyle.info}>
-          <Row handleHome={handleHome} />
-          <UserInfo userName={user.name} handleSignOut={handleSignOut} />
+          <Row handleHome={handleHome}/>
+          <UserInfo userName={user.name} handleSignOut={handleSignOut} />     
         </View>
         <View style={ShootingStyle.mainphoto}>
           <View style={ShootingStyle.content}>
             <View style={ShootingStyle.elipse2}>
               <View style={ShootingStyle.elipse}>
-                {isOpenCamera ? (
+              {isOpenCamera ? (
                   <Camera
                     style={ShootingStyle.camera}
                     type={cameraType}
@@ -182,22 +188,22 @@ const Shooting = () => {
               <FontAwesomeIcon icon="camera" size={30} color="#5C6A7E" />
             </TouchableOpacity>
             {isCameraReady ? (
-              <TouchableOpacity
-                onPress={toggleCameraType}
-                style={ShootingStyle.rectangleB}
-              >
-                <FontAwesomeIcon icon="camera-rotate" size={30} color="#5C6A7E" />
-              </TouchableOpacity>
-            )
-              :
-              (
-                <TouchableOpacity
-                  onPress={handleChooseFromGallery}
-                  style={ShootingStyle.rectangleB}
-                >
-                  <FontAwesomeIcon icon="image" size={30} color="#5C6A7E" />
-                </TouchableOpacity>
-              )}
+            <TouchableOpacity
+              onPress={toggleCameraType}
+              style={ShootingStyle.rectangleB}
+            >
+              <FontAwesomeIcon icon="camera-rotate" size={30} color="#5C6A7E" />
+            </TouchableOpacity>
+          )
+          :
+          (
+            <TouchableOpacity
+              onPress={handleChooseFromGallery}
+              style={ShootingStyle.rectangleB}
+            >
+              <FontAwesomeIcon icon="image" size={30} color="#5C6A7E" />
+            </TouchableOpacity>
+          )}
           </View>
           <View style={ShootingStyle.test}>
             <TouchableOpacity
