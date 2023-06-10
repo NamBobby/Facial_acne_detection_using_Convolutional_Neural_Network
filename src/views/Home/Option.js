@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 import styles from "./styles/Homepage.styles.js";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
-const Option = ({ onPressShooting, onPressTracking }) => {
+const Option = ({ onPressShooting, onPressTracking, onPressInstruction}) => {
   return (
     <View style={styles.option}>
       <View style={styles.rectangle}>
@@ -20,6 +20,15 @@ const Option = ({ onPressShooting, onPressTracking }) => {
           </View>
         </TouchableOpacity>
       </View>
+{/* DRAFT */}
+      <View style={styles.rectangle}>
+        <TouchableOpacity onPress={onPressInstruction}>
+          <View style={styles.icon}>
+            <FontAwesomeIcon icon="question" size={30} color="#535773" />
+          </View>
+        </TouchableOpacity>
+      </View>
+
     </View>
   );
 };

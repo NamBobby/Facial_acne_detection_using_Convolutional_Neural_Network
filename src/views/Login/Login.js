@@ -28,7 +28,7 @@ const Login = () => {
 
   const handleSignIn = async () => {
     if (email === '' || password === '') {
-      Alert.alert('Thông báo', 'Vui lòng điền đầy đủ thông tin.');
+      Alert.alert('Alert', 'Please fill in all information.');
       return;
     }
     if (!isValidEmail(email)) {
@@ -40,16 +40,16 @@ const Login = () => {
       if (user) {
         navigation.navigate('Home', { user: { name: user.name, email, userId: user.userId } });
       } else {
-        Alert.alert('Thông báo', 'Tài khoản không tồn tại hoặc nhập sai thông tin.');
+        Alert.alert('Alert', 'Email or password is wrong.');
       }
     } catch (error) {
-      console.log('Lỗi khi lấy dữ liệu người dùng:', error);
+      console.log('Failed to get user information.', error);
     }
   };
 
   const handleSignUp = async () => {
     if (name === '' || email === '' || password === '' || confirmPassword === '') {
-      Alert.alert('Thông báo', 'Vui lòng điền đầy đủ thông tin.');
+      Alert.alert('Alert', 'Please fill in all information.');
       return;
     }
     if (!isValidEmail(email)) {
@@ -61,19 +61,19 @@ const Login = () => {
       return;
     }
     if (password !== confirmPassword) {
-      Alert.alert('Thông báo', 'Mật khẩu và xác nhận mật khẩu không khớp.');
+      Alert.alert('Alert', 'The password confirmation does not match.');
       return;
     }
     try {
       const existingUser = await getUserByEmail(email);
       if (existingUser) {
-        Alert.alert('Thông báo', 'Tài khoản đã tồn tại.');
+        Alert.alert('Alert', 'The email is already in use.');
       } else {
         await addUser(name, email, password);
         setShowSignIn(true);
       }
     } catch (error) {
-      console.log('Lỗi khi thêm dữ liệu:', error);
+      console.log('Failed to get user information.', error);
     }
   };
 
@@ -97,7 +97,7 @@ const Login = () => {
         </View>
         {showSignIn ? (
           <View style={LoginStyle.inputContainer}>
-            <Text style={LoginStyle.texttitle}>Please fill your detail to access your account.</Text>
+            <Text style={LoginStyle.texttitle}>Please fill your details to sign in.</Text>
             <View style={LoginStyle.inputText}>
               <Text style={LoginStyle.text}>Email</Text>
               <View style={LoginStyle.inputkhung}>
@@ -132,9 +132,10 @@ const Login = () => {
               <Text style={LoginStyle.buttonText}>Sign In</Text>
             </TouchableOpacity>
           </View>
+          
         ) : (
           <View style={LoginStyle.inputContainer}>
-            <Text style={LoginStyle.texttitle}>Please fill your detail to access your account.</Text>
+            <Text style={LoginStyle.texttitle}>Please fill your details to sign up.</Text>
             <View style={LoginStyle.inputText}>
               <Text style={LoginStyle.text}>Username</Text>
               <View style={LoginStyle.inputkhung}>
