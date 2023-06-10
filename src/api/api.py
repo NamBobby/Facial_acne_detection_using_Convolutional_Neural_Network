@@ -72,7 +72,6 @@ def process_endpoint():
             # Save the image
             image_path = f'static/images/{image_filename}'
             image.save(image_path, format='JPEG', quality=90)
-
             # Resize and transform the image
             image = transform(image).unsqueeze(0).to(device)
 
@@ -83,8 +82,8 @@ def process_endpoint():
             class_names = ["level_0", "level_1", "level_2", "level_3"]
             predicted_label = class_names[predicted_class]
 
-            # Return the predicted label, image path, and base64 string as JSON
-            return jsonify({'predicted_class': predicted_label, 'image_path': image_path})
+            # Return the predicted label, image path, and as JSON
+            return jsonify({'predicted_class': predicted_label ,'image_path': image_path})
         except Exception as e:
             return jsonify({'error': str(e)})
     elif request.method == 'GET':

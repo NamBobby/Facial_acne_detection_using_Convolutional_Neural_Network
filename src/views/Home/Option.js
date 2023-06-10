@@ -20,15 +20,6 @@ const Option = ({ onPressShooting, onPressTracking, onPressInstruction}) => {
           </View>
         </TouchableOpacity>
       </View>
-{/* DRAFT */}
-      <View style={styles.rectangle}>
-        <TouchableOpacity onPress={onPressInstruction}>
-          <View style={styles.icon}>
-            <FontAwesomeIcon icon="question" size={30} color="#535773" />
-          </View>
-        </TouchableOpacity>
-      </View>
-
     </View>
   );
 };
