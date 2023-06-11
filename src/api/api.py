@@ -12,7 +12,7 @@ CORS(app)
 
 # Load the saved model
 num_classes = 4
-loaded_model = models.resnet18(weights=None)
+loaded_model = models.resnet18(pretrained=False)
 loaded_model.avgpool = nn.Sequential(
     nn.AdaptiveAvgPool2d(1),
     CBAM(channels=loaded_model.fc.in_features)
@@ -99,4 +99,4 @@ def get_image(filename):
     return send_from_directory(os.path.join(current_dir, 'static', 'images'), filename)
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.5', port=5000)
+    app.run(host='192.168.1.11', port=5000)
