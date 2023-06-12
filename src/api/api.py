@@ -12,7 +12,7 @@ CORS(app)
 
 # Load the saved model
 num_classes = 4
-loaded_model = models.resnet18(weights=None)
+loaded_model = models.resnet18(pretrained=False)
 loaded_model.avgpool = nn.Sequential(
     nn.AdaptiveAvgPool2d(1),
     CBAM(channels=loaded_model.fc.in_features)
@@ -43,7 +43,7 @@ loaded_model.eval()
 
 # Define the transformations for preprocessing the image
 transform = transforms.Compose([
-    transforms.Resize((224, 224)),
+    transforms.Resize((256, 256)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])

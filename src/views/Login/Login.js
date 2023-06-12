@@ -32,7 +32,7 @@ const Login = () => {
       return;
     }
     if (!isValidEmail(email)) {
-      Alert.alert('Thông báo', 'Email không hợp lệ.');
+      Alert.alert('Alert', 'The email is already in use.');
       return;
     }
     try {
@@ -53,11 +53,11 @@ const Login = () => {
       return;
     }
     if (!isValidEmail(email)) {
-      Alert.alert('Thông báo', 'Email không hợp lệ.');
+      Alert.alert('Alert', 'Email address is invalid.');
       return;
     }
     if (password.length < 8) {
-      Alert.alert('Thông báo', 'Mật khẩu phải có ít nhất 8 ký tự.');
+      Alert.alert('Alert', 'Password must have at least 8 characters.');
       return;
     }
     if (password !== confirmPassword) {
