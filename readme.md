@@ -27,6 +27,11 @@ Change the ip in 2 files:
 >>> app.run(host='192.168.100.6', port=5000)
 + to:
 >>> app.run(host='192.168.100.5', port=5000)
+- src/api/templates/result.html at line 25:
++ from:
+>>> <img src="http://192.168.100.6:5000/static/images/image.jpg" alt="Image">
++ to:
+>>> <img src="http://192.168.100.5:5000/static/images/image.jpg" alt="Image">
 
 * To run project on mobile device, you have to open 2 terminals in 4 following steps:
 1. First terminal run command line: 
