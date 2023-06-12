@@ -93,11 +93,7 @@ const Result = () => {
             <View style={ResultStyle.elipse2}>
             
               <View style={ResultStyle.elipse}>
-                {imageUrl ? (
-                  <>
-                  <Image source={{ uri: imageUrl }} style={ResultStyle.img} />      
-                  </>
-                ) : null}
+                <Image source={imageUrl} style={ResultStyle.img} />      
               </View>
             </View>
           </View>
