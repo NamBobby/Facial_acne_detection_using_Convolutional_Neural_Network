@@ -44,7 +44,7 @@ const Shooting = () => {
       .then((response) => {
         let result = response.data.predicted_class;
         console.log('Result: ', result);
-        navigation.navigate("Result", { imageUrl: selectedFile.uri, result: result, user: route.params.user });
+        navigation.navigate("Result", { result: result, user: route.params.user });
       })
       .catch((error) => {
         console.log(error);

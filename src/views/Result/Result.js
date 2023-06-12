@@ -4,6 +4,7 @@ import { Circle, Svg } from 'react-native-svg';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { saveResult} from '../../../database';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import imageUrl from "../../api/static/images/image.jpg";
 
 import UserInfo from "../../components/UserInfo/UserInfo.js";
 import Row from '../../components/Row/RowBack/Row';
@@ -14,8 +15,7 @@ const Result = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { user } = route.params;
-  const imageUrl = route.params?.imageUrl;
-
+ 
   const [result, setResult] = useState('');
   const [scanning, setScanning] = useState(true);
 
