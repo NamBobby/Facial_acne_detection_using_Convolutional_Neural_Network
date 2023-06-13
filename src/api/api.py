@@ -12,7 +12,7 @@ CORS(app)
 
 # Load the saved model
 num_classes = 4
-loaded_model = models.resnet18(pretrained=False)
+loaded_model = models.resnet18(weights=None)
 loaded_model.avgpool = nn.Sequential(
     nn.AdaptiveAvgPool2d(1),
     CBAM(channels=loaded_model.fc.in_features)
