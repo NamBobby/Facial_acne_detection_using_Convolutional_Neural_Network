@@ -57,7 +57,7 @@ def process_endpoint():
 
     if request.method == 'POST':
         if 'image' not in request.files:
-            return jsonify({'error': 'No image found'})
+            return jsonify({'Error': 'No image found'})
 
         # Get the image file from the POST request
         image_file = request.files['image']
@@ -99,4 +99,4 @@ def get_image(filename):
     return send_from_directory(os.path.join(current_dir, 'static', 'images'), filename)
 
 if __name__ == '__main__':
-    app.run(host='192.168.100.5', port=5000)
+    app.run(host='192.168.1.11', port=5000)
