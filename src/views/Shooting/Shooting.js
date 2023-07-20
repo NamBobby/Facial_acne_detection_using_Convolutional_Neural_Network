@@ -40,7 +40,7 @@ const Shooting = () => {
     });
   
     axios
-      .post("http://192.168.1.8:5000/process", formData)  // Replace with your Flask API host and port
+      .post("http://192.168.100.6:5000/process", formData)  // Replace with your Flask API host and port
       .then((response) => {
         let result = response.data.predicted_class;
         console.log('Result: ', result);

@@ -99,4 +99,4 @@ def get_image(filename):
     return send_from_directory(os.path.join(current_dir, 'static', 'images'), filename)
 
 if __name__ == '__main__':
-    app.run(host='192.168.1.8', port=5000)
+    app.run(host='192.168.100.6', port=5000)

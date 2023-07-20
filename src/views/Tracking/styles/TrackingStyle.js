@@ -38,7 +38,31 @@ const TrackingStyle = StyleSheet.create({
     display: "flex",
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    },
+    bottominfo: {
+      marginTop: 50,
+      backgroundColor: "#B7D4FB",
+      borderRadius: 30,
+      width: 375,
+      height: 100,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    noti: {
+      borderRadius: 30,
+      padding: 10,
+      marginTop: 10,
+      alignItems: "center",
+    },
+    notiText: {
+      fontSize: 16,
+      lineHeight: 20,
+      fontFamily: 'Montserrat-Bold',
+      color: "#37557C",
+      display: "flex",
+      alignItems: "flex-end",
+    },
 });
 
 export default TrackingStyle;

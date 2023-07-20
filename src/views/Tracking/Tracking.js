@@ -15,6 +15,8 @@ const Tracking = () => {
   const [chartData, setChartData] = useState(null);
   const route = useRoute();
   const { user } = route.params;
+  const [todayDate, setTodayDate] = useState("");
+  const [notification, setNotification] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +58,38 @@ const Tracking = () => {
 
   useEffect(() => {
     console.log('ChartData đã được cập nhật:', chartData);
+  }, [chartData]);
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const month = currentDate.toLocaleString('default', { month: 'short' });
+    const day = currentDate.getDate();
+    const formattedDate = `Today, ${day} ${month}`;
+    setTodayDate(formattedDate);
+  }, []);
+
+  useEffect(() => {
+    if (chartData && chartData.length > 0 && chartData[chartData.length-1].date !== "") {
+      const latestData = chartData.find((data) => data.date !== "");
+      const previousData = chartData.find((data) => data.date !== "" && data.date !== latestData.date);
+
+      if (latestData && previousData) {
+        const latestLevel = latestData.result.replace('level_', '');
+        const previousLevel = previousData.result.replace('level_', '');
+
+        if (latestLevel !== previousLevel) {
+          const increased = latestLevel > previousLevel;
+          const comparisonText = increased ? 'increased' : 'decreased';
+          setNotification(`🔔 ${todayDate} - Your acne severity ${comparisonText} from level_${previousLevel} to level_${latestLevel}`);
+        } else {
+          setNotification(null);
+        }
+      } else {
+        setNotification(null);
+      }
+    } else {
+      setNotification(null);
+    }
   }, [chartData]);
 
   const fillMissingLevels = (data) => {
@@ -110,6 +144,7 @@ const Tracking = () => {
         <Row handleHome={handleHome}/>
         <UserInfo userName={user.name} handleSignOut={handleSignOut} />
       </View>
+      
       <View style={TrackingStyle.topinfo}>
         <Text style={TrackingStyle.title}>Acne Tracker</Text>   
         {chartData && chartData.some(data => data.date !== "") ? (
@@ -150,7 +185,14 @@ const Tracking = () => {
         ) : (
           <Text style={TrackingStyle.title}>Data Tracking is empty</Text>
         )}
+      </View>     
+      {chartData && chartData.some(data => data.date !== "") && notification !== null && (
+      <View style={TrackingStyle.bottominfo}>
+        <View style={TrackingStyle.noti}>
+          <Text style={TrackingStyle.notiText}>{notification}</Text>
+        </View>
       </View>
+      )}
     </View>
   );
 };
