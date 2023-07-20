@@ -139,7 +139,7 @@ const Tracking = () => {
               style={graphStyle}
               width={Dimensions.get('window').width - (Platform.OS === 'ios' ? 40 : 80)}
               height={250}
-              bezier
+              //bezier //make the line curvy
               yAxisLabel="level_"
               yLabel={(value) => `level_${value}`}
               verticalLabelRotation={30}
